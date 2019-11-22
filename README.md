@@ -3,19 +3,17 @@
 
 ![](https://github.com/reprohack/reprohack-hq/raw/master/assets/reprohack-banner.png)
 
-# Welcome to the **Awesome conference / organiser \#ReproHack**\!
+# Welcome to the **ReproHack @ SESYNC \#ReproHack**\!
 
 <br>
 
-#### :date: **27th June 2019**
+#### :date: **6 Feb 2020**
 
-#### :alarm\_clock: **9.30am-15:30pm**
+#### :alarm\_clock: **9am - 5pm**
 
-##### :round\_pushpin: **Ada Lovelace Seminar Room, Dept. of Computer Science**
+##### :round\_pushpin: **Room TBD**
 
-##### :earth\_africa: [**The University of Sheffield, 211 Portobello, Sheffield S1 4DP**](https://www.openstreetmap.org/?mlat=53.38119&mlon=-1.48036#map=19/53.38119/-1.48036)
-
-[![Gitter](https://badges.gitter.im/reprohack/community.svg)](https://gitter.im/reprohack/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+##### :earth\_africa: [**SESYNC**](https://www.openstreetmap.org/?mlat=39&mlon=-76.5#map=19/39/-76.5)
 
 -----
 
@@ -60,7 +58,7 @@ more\!
 
 This is the master repo of the hack. We’ll collect information on the
 teams and projects through
-[issues](https://github.com/your_account/reprohack-location-ISOdate/issues/)
+[issues](https://github.com/SESYNC-ci/reprohack-sesync-Feb-6-2020/issues/)
 in this repo. We’ll track of discussions and collaborative notes on the
 event [**hackpad**](https://hackmd.io/link-to-copy-of-hackpad/edit)
 
@@ -74,10 +72,8 @@ expected to uphold this code.
 ### **Authors**
 
 We encourage authors that are keen, to be available for participants to
-reach out to for guidance or even just to say hello\! We’ve set up a
-[**gitter channel**](https://gitter.im/reprohack/community) as a public
-lobby where you can also reach the organisers prior to the hack. You can
-also start discussions or add comments through our collaborative
+reach out to for guidance or even just to say hello\! You can start
+discussions or add comments through our collaborative
 [**hackpad**](https://hackmd.io/link-to-copy-of-hackpad/edit).
 
 ### **Participants**
@@ -94,7 +90,7 @@ then form into teams.
 
   - In your teams **decide which paper/hack topic** you wish to work on.
   - To register your team and paper / topic [**open a new
-    issue**](https://github.com/your_account/reprohack-location-ISOdate/issues/new/choose)
+    issue**](https://github.com/SESYNC-ci/reprohack-sesync-Feb-6-2020/issues/new/choose)
     in this repository using the issue templates provided.
   - **Complete details** and create.
   - Please also add each individual participants details in the relevant
