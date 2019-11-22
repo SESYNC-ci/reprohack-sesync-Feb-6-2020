@@ -1,11 +1,11 @@
 ---
 output: github_document
 params: 
-  title: "Awesome conference / organiser"
-  room_location: "Ada Lovelace Seminar Room, Dept. of Computer Science"
-  address: "The University of Sheffield, 211 Portobello, Sheffield S1 4DP"
-  date: "27th June 2019"
-  time: "9.30am-15:30pm"
+  title: "ReproHack @ SESYNC"
+  room_location: "Room TBD"
+  address: "SESYNC"
+  date: "6 Feb 2020"
+  time: "9am - 5pm"
   bannerurl: "https://github.com/reprohack/reprohack-hq/raw/master/assets/reprohack-banner.png"
   latitude: 53.38119
   longitude: -1.48036
@@ -14,7 +14,7 @@ params:
   submission_url: https://link-to-submissionform
   feedback_url: https://link-to-feedbackform
   paper_shinyapp_url: https://youraccount.shinyapps.io/reprohack-awesome-conf
-  reprohack_repo_url: https://github.com/your_account/reprohack-location-ISOdate
+  reprohack_repo_url: https://github.com/SESYNC-ci/reprohack-sesync-Feb-6-2020
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -26,7 +26,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, include=FALSE}
 openstreetmaps_location_url <- paste0("https://www.openstreetmap.org/?mlat=",
                                       params$latitude,
                                       "&mlon=", params$longitude,
@@ -47,7 +47,6 @@ openstreetmaps_location_url <- paste0("https://www.openstreetmap.org/?mlat=",
 ##### :round_pushpin: **`r params$room_location`**
 ##### :earth_africa: [**`r params$address`**](`r openstreetmaps_location_url`)
   
-[![Gitter](https://badges.gitter.im/reprohack/community.svg)](https://gitter.im/reprohack/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 ***
 
@@ -74,7 +73,7 @@ We invite nominations for papers that have both associated **code** and **data**
 <br>
 
 
-```{r, echo = F, results='asis'}
+```{r, echo = F, include=FALSE}
 if(!is.null(params$registration_url)){
   cat(paste0("### [**REGISTER as a participant**](", params$registration_url, ")"))
 }
@@ -94,7 +93,7 @@ As all Carpentries events, we strive to make this event open and inclusive to al
 
 ### **Authors**
 
-We encourage authors that are keen, to be available for participants to reach out to for guidance or even just to say hello! We've set up a [**gitter channel**](https://gitter.im/reprohack/community) as a public lobby where you can also reach the organisers prior to the hack. You can also start discussions or add comments through our collaborative [**hackpad**](`r params$hackpad_url`).
+We encourage authors that are keen, to be available for participants to reach out to for guidance or even just to say hello! You can start discussions or add comments through our collaborative [**hackpad**](`r params$hackpad_url`).
 
 ### **Participants**
 
