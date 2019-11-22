@@ -1,23 +1,23 @@
 ---
-title: "CarpentryConnect Manchester 2019"
+title: "ReproHack @ SESYNC 2020"
 output:
     html_document:
         theme: flatly
         css: reprohack.css
 params: 
-  title: "Awesome conference / organiser"
-  room_location: "Ada Lovelace Seminar Room, Dept. of Computer Science"
-  address: "The University of Sheffield, 211 Portobello, Sheffield S1 4DP"
-  date: "27th June 2019"
-  time: "9.30am-15:30pm"
+  title: "ReproHack @ SESYNC"
+  room_location: "TBD"
+  address: "SESYNC"
+  date: "6 Feb 2020"
+  time: "9am - 5pm"
   bannerurl: "https://github.com/reprohack/reprohack-hq/raw/master/assets/reprohack-banner.png"
-  latitude: 53.38119
-  longitude: -1.48036
+  latitude: 39
+  longitude: -76.5
   registration_url: null
   hackpad_url: https://hackmd.io/link-to-copy-of-hackpad/edit
   submission_url: https://link-to-submissionform
-  reprohack_repo_url: https://github.com/your_account/reprohack-location-ISOdate
-  submission_form_title: ReproHack Paper Submission Form - your event
+  reprohack_repo_url: https://github.com/SESYNC-ci/reprohack-sesync-Feb-6-2020
+  submission_form_title: ReproHack Paper Submission Form - SESYNC
 runtime: shiny
 ---
 
@@ -34,13 +34,12 @@ runtime: shiny
 #### **`r shiny::icon("map-marked-alt")` `r params$address`**
   
 
-```{r, echo = F, results='asis'}
+```{r, echo = F, include=FALSE}
 if(!is.null(params$registration_url)){
   cat(paste0("### [**REGISTER**](", params$registration_url, ")"))
 }
 ```
 
-[![Gitter](https://badges.gitter.im/reprohack/community.svg)](https://gitter.im/reprohack/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 ##### [workshop repository](`r params$reprohack_repo_url`): containing details for participants
 
