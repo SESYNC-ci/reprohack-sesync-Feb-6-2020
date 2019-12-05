@@ -32,16 +32,26 @@ scientific activity in itself**, with useful outcomes for authors and
 valuable learning experiences for the participants and the research
 community as a whole.
 
+We are hoping to use this ReproHack as a learning opportunity - to learn
+about doing reproductions and to learn how our own work can benefit from
+this effort.
+
 -----
 
-## **Two ways to get involved:**
+## **Please do these preliminary steps:**
 
-### **[Nominate a paper](https://link-to-submissionform)**
+### **[Nominate a paper by January 7](https://link-to-submissionform)**
 
-We invite nominations for papers that have both associated **code** and
-**data** publicly available. We also encourage analyses based on open
-source tools as we cannot guarantee participants will have access to
-specialised licenced software.
+We invite you to nominate papers that have both associated **code** and
+**data** publicly available. The following are links to previous
+ReproHacks with proposed papers or other sources for possible papers;
+you are welcome to nominate off of those lists, or other papers, as
+well. Rachael and Kelly will confirm that all nominations have both data
+and code available, and then all participants will have the opportunity
+to vote on the paper we will work on.
+
+<https://reprohacknl.github.io/ReproHack/>
+<https://curatescience.org/app/>
 
 [**Current list of proposed papers and
 projects**](https://youraccount.shinyapps.io/reprohack-awesome-conf)
@@ -56,39 +66,24 @@ more\!
 
 ## **On the day**
 
-This is the master repo of the hack. We’ll collect information on the
-teams and projects through
-[issues](https://github.com/SESYNC-ci/reprohack-sesync-Feb-6-2020/issues/)
-in this repo. We’ll track of discussions and collaborative notes on the
-event [**hackpad**](https://hackmd.io/link-to-copy-of-hackpad/edit)
+Come to SESYNC just like normal\! We’ll all work on this project for the
+day\! It’ll be great\!
 
-As all Carpentries events, we strive to make this event open and
+As with all Carpentries events, we strive to make this event open and
 inclusive to all. As such the event is governed by the [Carpentries Code
 of
 Conduct](https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html)
 and you should read it before participating. By participating, you are
 expected to uphold this code.
 
-### **Authors**
-
-We encourage authors that are keen, to be available for participants to
-reach out to for guidance or even just to say hello\! You can start
-discussions or add comments through our collaborative
-[**hackpad**](https://hackmd.io/link-to-copy-of-hackpad/edit).
-
 ### **Participants**
 
 #### **Introduction & Welcome** [slides]()
 
-#### **1. Project review and team formation**
-
-We’ll start with a brief review of the [**papers
-proposed**](https://youraccount.shinyapps.io/reprohack-awesome-conf) and
-then form into teams.
+#### **1. Project review**
 
 #### **2. Select and register your project**
 
-  - In your teams **decide which paper/hack topic** you wish to work on.
   - To register your team and paper / topic [**open a new
     issue**](https://github.com/SESYNC-ci/reprohack-sesync-Feb-6-2020/issues/new/choose)
     in this repository using the issue templates provided.
@@ -108,20 +103,20 @@ help to have a look at the [feedback form](https://link-to-feedbackform)
 before you begin and keep notes during. Feel free to use the event
 hackpad for that.
 
-We’ll **come together during the day** to discuss progress and
-troubleshoot any sticking points.
+Throughout the day we’ll discuss progress and troubleshoot any sticking
+points.
 
-Should you finish reproducing your paper quickly, you might want to
+Should we finish reproducing our paper quickly, we might want to
 consider attempting to **replicate** the results, for example, if the
 code is in R consider translating the analysis to python and examining
-whether you are getting the same results. Such a contribution would be
+whether we are getting the same results. Such a contribution would be
 appropriate for publication in the **ReScience C** journal\! Have a look
 at the journals [website](http://rescience.github.io/write/) for further
 details.
 
-Should you produce any additional materials relating to your
-reproduction during the session, we ask that you **share it publicly**
-and **update your team’s issue with any relevant URLs**.
+Should we produce any additional materials relating to our reproduction
+during the session, we will **share them publicly** and **update your
+team’s issue with any relevant URLs**.
 
 #### **4. Leave feedback for the authors**
 
@@ -133,8 +128,6 @@ their papers have been incredibly brave. Here’s an
 of feedback to authors.
 
 #### **5. Feedback to the group on your experiences**
-
-You can use the hackpad to take notes and summarise your experiences.
 
 #### **Closing Remarks**
 
