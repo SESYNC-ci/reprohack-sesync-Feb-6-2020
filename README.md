@@ -34,13 +34,14 @@ community as a whole.
 
 We are hoping to use this ReproHack as a learning opportunity - to learn
 about doing reproductions and to learn how our own work can benefit from
-this effort.
+this
+effort.
 
 -----
 
 ## **Please do these preliminary steps:**
 
-### **[Nominate a paper by January 7](https://link-to-submissionform)**
+### **[Nominate a paper by January 7](https://forms.gle/UpfZFc8m6LGPY6Rr5)**
 
 We invite you to nominate papers that have both associated **code** and
 **data** publicly available. The following are links to previous
@@ -51,6 +52,7 @@ and code available, and then all participants will have the opportunity
 to vote on the paper we will work on.
 
 <https://reprohacknl.github.io/ReproHack/>
+
 <https://curatescience.org/app/>
 
 [**Current list of proposed papers and
@@ -99,9 +101,9 @@ Follow any instructions/documentation associated with the papers and try
 and reproduce the work. As you work through your paper, keep in mind the
 main points on which feedback to the authors will provided,
 **Reproducibility**, **Documentation** and **Reusability**. It might
-help to have a look at the [feedback form](https://link-to-feedbackform)
-before you begin and keep notes during. Feel free to use the event
-hackpad for that.
+help to have a look at the [feedback
+form](https://forms.gle/Q2DengC6QrMyVXP16) before you begin and keep
+notes during. Feel free to use the event hackpad for that.
 
 Throughout the day we’ll discuss progress and troubleshoot any sticking
 points.
@@ -121,8 +123,8 @@ team’s issue with any relevant URLs**.
 #### **4. Leave feedback for the authors**
 
 Please complete the [**Reproducibility feedback
-form**](https://link-to-feedbackform). Please also remember to be kind
-and constructive. Reproducibilty is hard and all authors submitting
+form**](https://forms.gle/Q2DengC6QrMyVXP16). Please also remember to be
+kind and constructive. Reproducibilty is hard and all authors submitting
 their papers have been incredibly brave. Here’s an
 [example](https://github.com/annakrystalli/write-ups/blob/master/assets/OpenCon_ReproHack%20feedback_form.pdf)
 of feedback to authors.
