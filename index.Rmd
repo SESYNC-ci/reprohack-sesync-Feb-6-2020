@@ -15,7 +15,7 @@ params:
   longitude: -76.5
   registration_url: null
   hackpad_url: https://hackmd.io/link-to-copy-of-hackpad/edit
-  submission_url: https://link-to-submissionform
+  submission_url: https://forms.gle/UpfZFc8m6LGPY6Rr5
   reprohack_repo_url: https://github.com/SESYNC-ci/reprohack-sesync-Feb-6-2020
   submission_form_title: ReproHack Paper Submission Form - SESYNC
 runtime: shiny
