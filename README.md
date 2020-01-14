@@ -71,9 +71,8 @@ more\!
 Come to SESYNC just like normal\! We’ll all work on this project for the
 day\! It’ll be great\!
 
-As with all Carpentries events, we strive to make this event open and
-inclusive to all. As such the event is governed by the [Carpentries Code
-of
+While this is not a Carpentries event, we are modeling it on Carpentries
+policies. As such the event is governed by the [Carpentries Code of
 Conduct](https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html)
 and you should read it before participating. By participating, you are
 expected to uphold this code.
@@ -84,18 +83,7 @@ expected to uphold this code.
 
 #### **1. Project review**
 
-#### **2. Select and register your project**
-
-  - To register your team and paper / topic [**open a new
-    issue**](https://github.com/SESYNC-ci/reprohack-sesync-Feb-6-2020/issues/new/choose)
-    in this repository using the issue templates provided.
-  - **Complete details** and create.
-  - Please also add each individual participants details in the relevant
-    section of the
-    [**hackpad**](https://hackmd.io/link-to-copy-of-hackpad/edit) so we
-    have a complete list of participants.
-
-#### **3. Work on your project\!**
+#### **2. Work on your project\!**
 
 Follow any instructions/documentation associated with the papers and try
 and reproduce the work. As you work through your paper, keep in mind the
@@ -116,31 +104,21 @@ appropriate for publication in the **ReScience C** journal\! Have a look
 at the journals [website](http://rescience.github.io/write/) for further
 details.
 
-Should we produce any additional materials relating to our reproduction
-during the session, we will **share them publicly** and **update your
-team’s issue with any relevant URLs**.
-
-#### **4. Leave feedback for the authors**
+#### **3. Leave feedback for the authors**
 
 Please complete the [**Reproducibility feedback
 form**](https://forms.gle/Q2DengC6QrMyVXP16). Please also remember to be
 kind and constructive. Reproducibilty is hard and all authors submitting
 their papers have been incredibly brave. Here’s an
 [example](https://github.com/annakrystalli/write-ups/blob/master/assets/OpenCon_ReproHack%20feedback_form.pdf)
-of feedback to authors.
+of feedback to
+authors.
 
-#### **5. Feedback to the group on your experiences**
+#### **4. Feedback to the group on your experiences**
 
 #### **Closing Remarks**
 
 -----
-
-#### Collaborative note taking:
-
-Feel free to contribute any additional thoughts on our collaborative
-[**hackpad**](https://hackmd.io/link-to-copy-of-hackpad/edit). These can
-help form the basis for a blogpost on the
-event.
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This
 work is licensed under a
