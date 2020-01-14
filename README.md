@@ -55,9 +55,6 @@ to vote on the paper we will work on.
 
 <https://curatescience.org/app/>
 
-[**Current list of proposed papers and
-projects**](https://forms.gle/UpfZFc8m6LGPY6Rr5)
-
 <br>
 
 Join us at the hack to **dig into exciting science**, learn more about
@@ -79,7 +76,7 @@ expected to uphold this code.
 
 ### **Participants**
 
-#### **Introduction & Welcome** [slides]()
+#### **Introduction & Welcome**
 
 #### **1. Project review**
 

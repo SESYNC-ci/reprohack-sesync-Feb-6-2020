@@ -75,8 +75,6 @@ https://reprohacknl.github.io/ReproHack/
 https://curatescience.org/app/
 
 
-[**Current list of proposed papers and projects**](`r params$submission_url`)
-
 <br>
 
 
@@ -100,7 +98,7 @@ While this is not a Carpentries event, we are modeling it on Carpentries policie
 
 ### **Participants**
 
-#### **Introduction & Welcome** [slides](`r params$intro_slides_url`)
+#### **Introduction & Welcome** 
 
 #### **1. Project review**
 
