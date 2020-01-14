@@ -10,7 +10,7 @@ params:
   latitude: 39
   longitude: -76.5
   registration_url: null
-  hackpad_url: https://hackmd.io/link-to-copy-of-hackpad/edit
+  hackpad_url: 
   submission_url: https://forms.gle/UpfZFc8m6LGPY6Rr5
   feedback_url: https://forms.gle/Q2DengC6QrMyVXP16
   paper_shinyapp_url: https://youraccount.shinyapps.io/reprohack-awesome-conf
@@ -66,7 +66,7 @@ We are hoping to use this ReproHack as a learning opportunity - to learn about d
 
 ## **Please do these preliminary steps:**
 
-### **[Nominate a paper by January 7](`r params$submission_url`)**
+### **[Nominate a paper by January 27](`r params$submission_url`)**
 
 We invite you to nominate papers that have both associated **code** and **data** publicly available. The following are links to previous ReproHacks with proposed papers or other sources for possible papers; you are welcome to nominate off of those lists, or other papers, as well. Rachael and Kelly will confirm that all nominations have both data and code available, and then all participants will have the opportunity to vote on the paper we will work on.
 
@@ -75,7 +75,7 @@ https://reprohacknl.github.io/ReproHack/
 https://curatescience.org/app/
 
 
-[**Current list of proposed papers and projects**](`r params$paper_shinyapp_url`)
+[**Current list of proposed papers and projects**](`r params$submission_url`)
 
 <br>
 
