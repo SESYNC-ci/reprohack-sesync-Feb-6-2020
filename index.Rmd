@@ -17,7 +17,7 @@ params:
   hackpad_url: https://hackmd.io/link-to-copy-of-hackpad/edit
   submission_url: https://forms.gle/UpfZFc8m6LGPY6Rr5
   reprohack_repo_url: https://github.com/SESYNC-ci/reprohack-sesync-Feb-6-2020
-  submission_form_title: ReproHack Paper Submission Form - SESYNC
+  submission_form_title: ReproHack Paper Submission Form - SESYNC Feb 6 2020
 runtime: shiny
 ---
 
@@ -142,10 +142,10 @@ print_contact_links <- function(responses, i){
   github_url <- paste0("https://github.com/", gsub(" *@ *", "", row[,"GitHub username (optional)"]))
   paste0("[<i class='fa fa-github'/>](", github_url,")")}else{NULL}
 
-  feedback <- if(row[, "Would you like to receive a copy of any feedback on the paper?"] == "Yes"){
-    "<i class='fa fa-comment-dots'/>"}else{NULL}
-  public <- if(row[,"Can feedback on your paper be made public?"] == "Yes"){
-    "<i class='fa fa-globe'/>"}else{NULL}
+  # feedback <- if(row[, "Would you like to receive a copy of any feedback on the paper?"] == "Yes"){
+  #   "<i class='fa fa-comment-dots'/>"}else{NULL}
+  # public <- if(row[,"Can feedback on your paper be made public?"] == "Yes"){
+  #   "<i class='fa fa-globe'/>"}else{NULL}
   
   return(paste(twitter, github, feedback, public))
 }

@@ -2,7 +2,7 @@
 output: github_document
 params: 
   title: "ReproHack @ SESYNC"
-  room_location: "Room TBD"
+  room_location: "Cave Conference Room"
   address: "SESYNC"
   date: "6 Feb 2020"
   time: "9am - 5pm"
