@@ -11,7 +11,7 @@
 
 #### :alarm\_clock: **9am - 5pm**
 
-##### :round\_pushpin: **Room TBD**
+##### :round\_pushpin: **Cave Conference Room**
 
 ##### :earth\_africa: [**SESYNC**](https://www.openstreetmap.org/?mlat=39&mlon=-76.5#map=19/39/-76.5)
 
@@ -41,7 +41,7 @@ effort.
 
 ## **Please do these preliminary steps:**
 
-### **[Nominate a paper by January 7](https://forms.gle/UpfZFc8m6LGPY6Rr5)**
+### **[Nominate a paper by January 27](https://forms.gle/UpfZFc8m6LGPY6Rr5)**
 
 We invite you to nominate papers that have both associated **code** and
 **data** publicly available. The following are links to previous
@@ -56,7 +56,7 @@ to vote on the paper we will work on.
 <https://curatescience.org/app/>
 
 [**Current list of proposed papers and
-projects**](https://youraccount.shinyapps.io/reprohack-awesome-conf)
+projects**](https://forms.gle/UpfZFc8m6LGPY6Rr5)
 
 <br>
 
