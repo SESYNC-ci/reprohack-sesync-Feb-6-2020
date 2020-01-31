@@ -34,14 +34,13 @@ community as a whole.
 
 We are hoping to use this ReproHack as a learning opportunity - to learn
 about doing reproductions and to learn how our own work can benefit from
-this
-effort.
+this effort.
 
 -----
 
 ## **Please do these preliminary steps:**
 
-### **[Nominate a paper by January 27](https://forms.gle/UpfZFc8m6LGPY6Rr5)**
+### **Nominate a paper by January 27**
 
 We invite you to nominate papers that have both associated **code** and
 **data** publicly available. The following are links to previous
@@ -54,6 +53,35 @@ to vote on the paper we will work on.
 <https://reprohacknl.github.io/ReproHack/>
 
 <https://curatescience.org/app/>
+
+<br> \#\#\# **[Download and read the selected paper by
+February 6](https://onlinelibrary.wiley.com/doi/full/10.1111/gcb.12587)**
+
+We have selected a paper about climate change an potato blight that has
+published code and data publicly available.
+
+**Climate change may have limited effect on global risk of potato late
+blight.** Sparks, A. H., Forbes, G. A, Hijmans, R. J., & Garrett K. A.
+(2014). Climate change may have limited effect on global risk of potato
+late blight. Global Change Biology, <doi:10.1111/gcb.12587>.
+
+submitted for a previous ReproHack by Adam Sparks
+
+Why should we attempt to reproduce this paper?
+
+This is a two-for one. The repository contains code for companion
+papers, the model development and the model implementation and analysis.
+As the repository notes, some data are not freely available so I’ve made
+an effort to allow the paper to be replicated as best possible with
+what’s available.
+
+Paper URL: <https://onlinelibrary.wiley.com/doi/abs/10.1111/gcb.12587>
+
+Data URL:
+<https://figshare.com/articles/Supporting_files_for_Climate_change_may_have_limited_effect_on_global_risk_of_potato_late_blight/1066070>
+
+Code URL:
+<https://github.com/adamhsparks/Global-Late-Blight-MetaModelling>
 
 <br>
 
