@@ -48,32 +48,33 @@ ReproHacks with proposed papers or other sources for possible papers;
 you are welcome to nominate off of those lists, or other papers, as
 well. Rachael and Kelly will confirm that all nominations have both data
 and code available, and then all participants will have the opportunity
-to vote on the paper we will work on.
+to vote on the paper we will work
+on.
 
 <https://reprohacknl.github.io/ReproHack/>
 
 <https://curatescience.org/app/>
 
-<br> \#\#\# **[Download and read the selected paper by
-February 6](https://onlinelibrary.wiley.com/doi/full/10.1111/gcb.12587)**
+<br>
+
+### **[Download and read the selected paper by February 6](https://onlinelibrary.wiley.com/doi/full/10.1111/gcb.12587)**
 
 We have selected a paper about climate change an potato blight that has
 published code and data publicly available.
 
 **Climate change may have limited effect on global risk of potato late
-blight.** Sparks, A. H., Forbes, G. A, Hijmans, R. J., & Garrett K. A.
-(2014). Climate change may have limited effect on global risk of potato
-late blight. Global Change Biology, <doi:10.1111/gcb.12587>.
+blight.**  
+Sparks, A. H., Forbes, G. A, Hijmans, R. J., & Garrett K. A. (2014).
+Climate change may have limited effect on global risk of potato late
+blight. Global Change Biology, <doi:10.1111/gcb.12587>.
 
 submitted for a previous ReproHack by Adam Sparks
 
-Why should we attempt to reproduce this paper?
-
-This is a two-for one. The repository contains code for companion
-papers, the model development and the model implementation and analysis.
-As the repository notes, some data are not freely available so I’ve made
-an effort to allow the paper to be replicated as best possible with
-what’s available.
+**Why should we attempt to reproduce this paper?** This is a two-for
+one. The repository contains code for companion papers, the model
+development and the model implementation and analysis. As the repository
+notes, some data are not freely available so I’ve made an effort to
+allow the paper to be replicated as best possible with what’s available.
 
 Paper URL: <https://onlinelibrary.wiley.com/doi/abs/10.1111/gcb.12587>
 
@@ -85,9 +86,10 @@ Code URL:
 
 <br>
 
-Join us at the hack to **dig into exciting science**, learn more about
-**reproducibility**, working with **other people’s code and data** and
-more\!
+We will **dig into exciting science**, learn more about
+**reproducibility**, and working with **other people’s code and data**,
+see how we can improve the reproducibiliyt of our research process. Hope
+you can join us\!
 
 -----
 
