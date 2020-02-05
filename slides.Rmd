@@ -1,72 +1,36 @@
 ---
-title: CCMcr19 ReproHack slides
-tags: ReproHack, introduction, slides
+title: SESYNC ReproHack 2020
 description: View the slide with "Slide Mode".
-slideOptions:
-    theme: white
+output:
+    ioslides_presentation: default
 ---
 
-# Welcome to our ReproHack!
+# Welcome to SESYNC ReproHack 2020!
+
 
 <!-- Put the link to this slide here so people can follow -->
-### Event Repository: bit.ly/CCMcr19-ReproHack
+## Event Repository:  
 
-Contains all event information and links to materials
+https://github.com/SESYNC-ci/reprohack-sesync-Feb-6-2020
+
+<br>
+
+Contains all event information and links to materials.
 
 
-
----
-
-# Introductions
-
----
-
-<!-- Add details about yourself the organiser here: -->
-
-## Who am I?
-
-### Dr Anna Krystalli (@annakrystalli)
-
-- Research Software Engineer _University of Sheffield_
-- Software Peer Review Editor _rOpenSci_ 
-- Co-organiser _Sheffield R Users Group_
-
----
-
-## Why am I here?
+## Why try to reproduce research?
 
 I believe there's lots to learn about Reproducibility from working with real published projects.
 
----
-
-## Who is my favorite animated character?
-
-Stitch!
-
-![](https://media3.giphy.com/media/95MU6SEzeLnUc/giphy.gif?cid=790b76115d11033236595055776d483b&rid=giphy.gif)
-
----
-
-<!-- Open it up to participants -->
-
-## Who are you?
-
-## Why are you here?
-
-## Who is your favorite animated character?
-
----
 
 # Plan of Action
 
----
 
-### Reproduce paper / Hack the ReproHack
+## Reproduce the paper 
 
-1. **Project review and team formation**
+1. 
 
-
-2. **Select and register your project**
+2. 
 
 3. **Work on your project!**
 
