@@ -104,46 +104,57 @@ Conduct](https://docs.carpentries.org/topic_folders/policies/code-of-conduct.htm
 and you should read it before participating. By participating, you are
 expected to uphold this code.
 
-### **Participants**
+### **Agenda**
 
-#### **Introduction & Welcome**
+#### 0930 **Intro to Reproducibility** (Rachael B.)
 
-#### **1. Project review**
+  - Why reproduce research?
+  - Anticipated hurdles to reproduction?
+  - Goals for the day
 
-#### **2. Work on your project\!**
+#### 0945 **Intro to selected paper** (Kelly J.)
 
-Follow any instructions/documentation associated with the papers and try
-and reproduce the work. As you work through your paper, keep in mind the
-main points on which feedback to the authors will provided,
-**Reproducibility**, **Documentation** and **Reusability**. It might
-help to have a look at the [feedback
-form](https://forms.gle/Q2DengC6QrMyVXP16) before you begin and keep
-notes during. Feel free to use the event hackpad for that.
+#### 1000 **Refresh/re-read paper**
 
-Throughout the day we’ll discuss progress and troubleshoot any sticking
-points.
+#### 1015 **Discuss division of tasks**
 
-Should we finish reproducing our paper quickly, we might want to
-consider attempting to **replicate** the results, for example, if the
-code is in R consider translating the analysis to python and examining
-whether we are getting the same results. Such a contribution would be
-appropriate for publication in the **ReScience C** journal\! Have a look
-at the journals [website](http://rescience.github.io/write/) for further
-details.
+#### 1030 **Start Reproducing\!**
 
-#### **3. Leave feedback for the authors**
+  - Follow any instructions/documentation associated with the papers and
+    try and reproduce the work. As you work through your paper,  
+    keep in mind the main points **Reproducibility**, **Documentation**
+    and **Reusability**. It might help to have a look at this  
+    [author feedback form](https://forms.gle/Q2DengC6QrMyVXP16) before
+    you begin and keep notes during.
 
-Please complete the [**Reproducibility feedback
-form**](https://forms.gle/Q2DengC6QrMyVXP16). Please also remember to be
-kind and constructive. Reproducibilty is hard and all authors submitting
-their papers have been incredibly brave. Here’s an
-[example](https://github.com/annakrystalli/write-ups/blob/master/assets/OpenCon_ReproHack%20feedback_form.pdf)
-of feedback to
-authors.
+  - Throughout the day we’ll discuss progress and troubleshoot any
+    sticking points.
 
-#### **4. Feedback to the group on your experiences**
+#### 1215 **Lunch break**
 
-#### **Closing Remarks**
+#### 1315 **Touch base on progress**
+
+#### 1330 **Resume work on reproduction**
+
+  - Should we finish reproducing our paper quickly, we might want to
+    consider attempting to **replicate** the results, for example,  
+    if the code is in R consider translating the analysis to python and
+    examining whether we are getting the same results. Such a  
+    contribution would be appropriate for publication in the **ReScience
+    C** journal\! Have a look at the journals  
+    [website](http://rescience.github.io/write/) for further details.
+
+  - Alternately, we could consider reproducing the companion paper to
+    this selected paper.
+
+#### 1600 **Revisit hurdles, both anticipated and encountered**
+
+#### 1615 **Revisit lessons learned**
+
+  - Implications for your research future (both short and longer
+term)?
+
+#### 1630 **Wrap up and conclusion**
 
 -----
 

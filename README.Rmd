@@ -108,29 +108,48 @@ While this is not a Carpentries event, we are modeling it on Carpentries policie
 
 
 
-### **Participants**
+### **Agenda**
 
-#### **Introduction & Welcome** 
+#### 0930 **Intro to Reproducibility** (Rachael B.)
 
-#### **1. Project review**
+ - Why reproduce research?
+ - Anticipated hurdles to reproduction?
+ - Goals for the day
+ 
+#### 0945 **Intro to selected paper** (Kelly J.)
 
-#### **2. Work on your project!**
+#### 1000 **Refresh/re-read paper**
 
-Follow any instructions/documentation associated with the papers and try and reproduce the work. As you work through your paper, keep in mind the main points on which feedback to the authors will provided, **Reproducibility**, **Documentation** and **Reusability**. It might help to have a look at the [feedback form](`r params$feedback_url`) before you begin and keep notes during. Feel free to use the event hackpad for that.
+#### 1015 **Discuss division of tasks**
 
-Throughout the day we'll discuss progress and troubleshoot any sticking points. 
+#### 1030 **Start Reproducing!**
+ 
+  - Follow any instructions/documentation associated with the papers and try and reproduce the work. As you work through your paper,  
+    keep in mind the main points **Reproducibility**, **Documentation** and **Reusability**. It might help to have a look at this  
+    [author feedback form](`r params$feedback_url`) before you begin and keep notes during.  
+  
+  - Throughout the day we'll discuss progress and troubleshoot any sticking points. 
 
-Should we finish reproducing our paper quickly, we might want to consider attempting to **replicate** the results, for example, if the code is in R consider translating the analysis to python and examining whether we are getting the same results. Such a contribution would be appropriate for publication in the **ReScience C** journal! Have a look at the journals [website](http://rescience.github.io/write/) for further details. 
+#### 1215 **Lunch break**
 
+#### 1315 **Touch base on progress**
 
-#### **3. Leave feedback for the authors**
+#### 1330 **Resume work on reproduction**
 
-Please complete the [**Reproducibility feedback form**](`r params$feedback_url`). Please also remember to be kind and constructive. Reproducibilty is hard and all authors submitting their papers have been incredibly brave. Here's an [example](https://github.com/annakrystalli/write-ups/blob/master/assets/OpenCon_ReproHack%20feedback_form.pdf) of feedback to authors.
+  - Should we finish reproducing our paper quickly, we might want to consider attempting to **replicate** the results, for example,  
+    if the code is in R consider translating the analysis to python and examining whether we are getting the same results. Such a  
+    contribution would be appropriate for publication in the **ReScience C** journal! Have a look at the journals  
+    [website](http://rescience.github.io/write/) for further details. 
+    
+  - Alternately, we could consider reproducing the companion paper to this selected paper.  
 
+#### 1600 **Revisit hurdles, both anticipated and encountered**
 
-#### **4. Feedback to the group on your experiences**
+#### 1615 **Revisit lessons learned**
 
-#### **Closing Remarks**
+  - Implications for your research future (both short and longer term)?
+  
+#### 1630 **Wrap up and conclusion**
 
 ***
 
