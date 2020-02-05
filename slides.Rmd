@@ -1,193 +1,160 @@
 ---
-title: SESYNC ReproHack 2020
-description: View the slide with "Slide Mode".
+title: Welcome to SESYNC ReproHack 2020!
 output:
     ioslides_presentation: default
 ---
 
-# Welcome to SESYNC ReproHack 2020!
-
-
-<!-- Put the link to this slide here so people can follow -->
-## Event Repository:  
-
-https://github.com/SESYNC-ci/reprohack-sesync-Feb-6-2020
+## Why try to reproduce research?
 
 <br>
 
-Contains all event information and links to materials.
-
-
-## Why try to reproduce research?
-
-I believe there's lots to learn about Reproducibility from working with real published projects.
-
-
-# Plan of Action
-
-
-## Reproduce the paper 
-
-1. 
-
-2. 
-
-3. **Work on your project!**
-
-4. **Re-group part-way through.**
-
-6. Feedback at the end (group & authors)
-
+I believe there's a lot to learn about making your work reproducibile by trying to reproduce real published projects.
 
 ---
 
-## Your Work Might be Publishable!
+```{r, out.width = '90%', fig.cap = "https://reprohack.github.io/reprohack-hq/", echo=FALSE}
+knitr::include_graphics("Screenshot_2020-02-05 ReproHack HQ.png")
+```
 
 ---
 
-
-### [ReScience C](http://rescience.github.io/)
-
-> **ReScience C** is an open-access peer-reviewed journal that targets computational research and encourages the **explicit replication** of already published research, promoting new and open-source implementations in order to ensure that the original research is reproducible.
-
----
-
-
-### What is **Replication:** 
-- Repeating a published protocol
-- Respecting its spirit and intentions
--  **Varying the technical details**, e.g. using different software, initial conditions, etc.
-
-***
-
-#### Change something that everyone believes shouldn’t matter, and see if the scientific conclusions are affected 
+```{r, out.width = '90%', fig.cap = "https://github.com/opetchey/RREEBES/blob/master/README.md", echo=FALSE}
+knitr::include_graphics("Screenshot_2020-02-05 opetchey RREEBES.png")
+```
 
 ---
 
-### Replicate your paper
+### **Reproducibility vs. Replicability**
 
-- Finished early? Consider attempting **replication**!
-- Replications could be considered for publication in **ReScience C** Journal
+<br>
 
+Run author's existing code to achieve the same results as in published paper.
 
----
+vs. 
 
-#### But! ReScience got in touch and **considering creating a new category!**
-
-- **Reproducibility Report**: 
-    + were results reproduced? 
-    + how hard/easy was it to reproduce? 
-    + did architectures differ etc. 
-    + what else? _discussion topic_
-
----
-
-### Then https://scigen.report got in touch:
-
-![](https://i.imgur.com/7v9VY5R.png)
-
----
-
-![](https://i.imgur.com/NO0QYu4.png)
+Recreate author's analysis with different technical details (e.g. using different software, initial conditions, etc.).
 
 
----
+## Goal for today
+
+Learn what it takes to make your science reproducible (no matter where you are starting from).
+
+<br>
+
+### **Think about**
+
+- What can I do right away to make my science more reproducible?
+- What can I do later (next month, next year, next project)...?
 
 
+## Plan of Action
 
-# Feed back
+**1. Review paper**
 
-# :speech_balloon: 
+**2. Divy up tasks**
 
----
+**3. Work on your project!**
 
-### Feed back
+**4. Re-group part-way through**
 
-- **Regroup part way through** to discuss progress and troubleshoot any sticking points
-- **Feedback to authors** using form by end of session
-- **Feedback to group** at the end, contribute to discussions
+**6. Feedback and take-homes at the end** 
 
----
+
+## Reproduction Guidlines
+
+<br>
+
+- Only manipulate data in R; no alteration of original data files
+
+- Use Rmarkdown files, thoroughly comment things
+
+- Use tidy principles (including style) https://style.tidyverse.org/syntax.html
 
 
 ## Code of Conduct
+
+<br>
 
 Event governed by [**Carpentries Code of Conduct**](https://docs.carpentries.org/topic_folders/policies/code-of-conduct.html)
 
 <br>
 
-### Additional Considerations
-
+### Additional Considerations  
+  
 - #### Reproducibility is hard!
-- #### Submitting authors are incredibly brave!
-
-
-
----
-
-## Thank you Authors! :raised_hands: 
-
-- #### Without them there would be no ReproHack.
-- #### Show gratitude and appreciation for their effort and bravery. :pray: 
 - #### Constructive criticism only please!
 
----
 
-# Let's go! :checkered_flag: 
-
----
-
-### Paper / hack topic review
+## Anticipated hurdles?
 
 
-#### **papers**: bit.ly/CCMcr19-ReproHack-papers
-#### **topics**: bit.ly/CCMcr19-ReproHack-topics
+## Event Repository  
 
----
+<br>
+https://github.com/SESYNC-ci/reprohack-sesync-Feb-6-2020
+  
 
-### Team formation / project registration
+  
+Contains all event information and links to materials.
 
-+ Fine to work individually
-+ Register your team and paper / topic by [**opening a new issue**](https://github.com/reprohack/reprohack-2019-06-27/issues/new/choose). bit.ly/CCMcr19-ReproHack
-+ Add your details to the [**hackpad**](https://hackmd.io/@U2KSpBasRLqM0fN-YALVrw/r1LTia9RV/edit).
+<br>
+
+Data is located at: "/nfs/public-data/ReproHack_2020"
+
 
 ---
 
-### Mid-point regroup
+## Mid-point regroup
+
+<br>
+
+Discuss progress and troubleshoot any sticking points.
+
+<br>
 
 - Briefly describe the approach to reproducibility the paper has taken.
 - Anything in particular you like about the paper's approach?
 - Anything you're having difficulty with?
 
----
 
-### Feedback to authors
+## Finished early?  Potentially consider publishing the replication?
 
-- Please complete the feedback form for authors bit.ly/CCMcr19-ReproHack-feedback
-- Feel free to take notes on the hackpad
+<br>
 
----
+Replications could be considered for publication in **ReScience C** Journal
 
-### Final regroup
+<br>
+
+### [ReScience C](http://rescience.github.io/)
+
+> **ReScience C** is an open-access peer-reviewed journal that targets computational research and encourages the **explicit replication** of already published research, promoting new and open-source implementations in order to ensure that the original research is reproducible.
+
+
+## Final regroup
+
+<br>
 
 - So, how did you get on? 
-- Final comments.
-- If there's time, tackle some discussion topics (see hackpad).
-- One thing you liked, one thing that can be improved (use post it's if you prefer)
+- Final comments; other some discussion topics?
+- One thing you liked, one thing that can be improved.
 
----
 
-### Further Resources
+## Take-homes
+
+- What can I do right away to make my science more reproducible?
+- What can I do later (next month, next year, next project)...?
+
+<br>
+
+**Remember:** It's an iterative process and you don't have to do everything all at once.
+
+
+## Further Resources
 
 - [**The Turing Way**](https://the-turing-way.netlify.com/introduction/introduction): a lightly opinionated guide to reproducible data science.
 - [**Packaging data analytical work reproducibly using R (and friends)**](https://peerj.com/preprints/3192/): how researchers can improve the reproducibility of their work using research compendia based on R packages and related tools
 
----
 
-# THANK YOU ALL! :pray: 
-
-- ### Thank you PARTICIPANTS for coming!
-- ### Thank you AUTHORS for submitting!
+# Thank you all for participating!  
 
 
-# :wave: 
