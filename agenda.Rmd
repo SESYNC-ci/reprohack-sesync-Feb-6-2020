@@ -1,0 +1,39 @@
+---
+title: 'Agenda: SESYNC ReproHack 2020'
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 0930 Intro to Reproducibility (Rachael B.)
+
+ - Why reproduce research?
+ - Anticipated hurdles to reproduction?
+ - Goals for the day
+ 
+## 0945 Intro to selected paper (Kelly J.)
+
+## 1000 Refresh/re-read paper
+
+## 1015 Discuss division of tasks
+
+## 1030 Start Reproducing!
+
+## 1215 Lunch break
+
+## 1315 Touch base on progress
+
+## 1330 Resume work on reproduction
+
+## 1600 Revisit hurdles, both anticipated and encountered
+
+## 1615 Revisit lessons learned
+
+  - Implications for your research future (both short and longer term)?
+  
+## 1630 Wrap up and conclusion
+ 
