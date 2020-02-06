@@ -1,0 +1,153 @@
+---
+title: "ReproHack 2020 SimCastMeta"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Data located here: "/nfs/public-data/ReproHack_2020
+
+# 1) Run SimcCast_Blight_Units.R
+
+```{r}
+source("./01 - Models/01 - SimcCast_Blight_Units.R")
+```
+Defined functions; loaded into global environment.
+
+HUSWO data not included in this repo.  Can no download from EPA database https://www3.epa.gov/scram001/metobsdata_databases.htm (connection times out).
+
+This R script doesn't output the files that are inputs to the next script (script indicates that it should in the header info).  Options needed to create the files are not defined, so can't replicate conditions necessary to generate output files. 
+
+Unclear how text files input to 02 - SimCastMeta.R are generated from this 01 - SimcCast_Blight_Units.R
+
+---
+
+# 2) SimCastMeta.R
+
+Good - installs packages if not found to load
+Bad - lines 46 - 60 need to have users comment in/out lines, so can't just run.  This isn't noted in the header info.
+
+Tested both monthly and daily models, and all ran.
+
+```{r}
+source("./01 - Models/02 - SimCastMeta.R")
+```
+Ran; generated dataframes, plot, GAM model, array
+
+---
+
+# 3) 01 - CRU CL2.0 SimCastMeta_Global_Late_Blight_Risk.R
+
+```{r}
+# Load Data --------------------------------------------------------------------
+if(!file.exists("Cache/Planting Seasons/CRUCL2.0_Combined.tif")){
+  source("Models/Ecocrop CRU CL2.0 Potato Growing Seasons.R")
+  }
+poplant <- raster("/nfs/public-data/ReproHack_2020/newCRUCL2.0_Combined.tif")
+
+```
+
+
+```{r}
+for(i in 1:12){
+  x <- stack(tmp_stack[[i]], reh_stack[[i]])
+  names(x) <- c("C", "RH")
+  y <- predict(x, SimCastMeta, progress = "text")
+  y[y<0] = 0 
+  
+  if(i == 1){z <- y} else z <- stack(z, y)
+  
+  filename <- paste("Cache/New_Predictions/", i, "CRU", sep = "")
+  writeRaster(y, filename,
+              format = "GTiff", dataType = "INT2S", 
+              options = c("COMPRESS=LZW"), 
+              overwrite = TRUE)
+}
+```
+
+```{r}
+for(j in 1:12){
+  if(j == 1){
+    w <- reclassify(poplant, c(01, 12, NA))
+    x <- stack(z[[j]], z[[j + 1]], z[[j + 2]])
+    x <- mask(x, w)
+    y <- mean(x)
+  }else if(j > 1 & j < 11){
+    w <- reclassify(poplant, as.numeric(c(0, paste("0", j-1, sep = ""), NA)))
+    w <- reclassify(w, as.numeric(c(paste("0", j, sep = ""), 12, NA)))
+    x <- stack(z[[j]], z[[j + 1]], z[[j + 2]])
+    x <- mask(x, w)
+    a <- mean(x)
+    y <- cover(y, a)
+  }else if(j == 11){
+    w <- reclassify(poplant, c(0, 10, NA))
+    w <- reclassify(w, c(11, 12, NA))
+    x <- stack(z[[11]], z[[12]], z[[1]])
+    x <- mask(x, w)
+    a <- mean(x)
+    y <- cover(y, a)
+  }else
+  w <- reclassify(poplant, c(0, 11, NA))
+  x <- stack(z[[12]], z[[1]], z[[2]])
+  x <- mask(x, w)
+  a <- mean(x)
+  global_blight_risk <- cover(y, a) 
+}
+```
+This for loop doesn't run properly, and returns the error:
+
+Error in .reclassify(values(x), rcl, include.lowest, right, leftright,  : 
+  Not compatible with requested type: [type=character; target=double].
+  
+It returns this error whether we used the cached data, or newly reproduced data.
+!! You have to add the `as.numeric()` on lines 78 and 79.
+
+
+```{r}
+# Data visulasation ------------------------------------------------------------
+plot(global_blight_risk, main = "Average Daily Blight Unit Accumulation\nPer Three Month Growing Season\n1975", xlab = "Longitude", ylab = "Latitude",
+     legend.args = list(text = "Blight\nUnits", side = 3, font = 2, line = 1, cex = 0.8))
+
+# Save the results for further use or analysis ---------------------------------
+if(max(blight_units$Blight == 6.39)){ # check to see whether we've used resistant or susceptible blight units for this analysis and assign new file name accordingly
+  writeRaster(global_blight_risk, 
+              "Cache/New_Risk_Maps/CRUCL2.0_SimCastMeta_Susceptible.tif",
+              format = "GTiff", dataType = "INT2S", 
+              options = c("COMPRESS=LZW"), 
+              overwrite = TRUE)
+} else
+  writeRaster(global_blightrisk, 
+              "NewCache/New_Risk_Maps/CRUCL2.0_SimCastMeta_Resistant.tif",
+              format = "GTiff", dataType = "INT2S", 
+              options = c("COMPRESS=LZW"), 
+              overwrite = TRUE)
+
+```
+
+
+---
+
+# 4) 
+
+---
+
+# 5) 03 - Extract_Visualise_Risk_by_Country.R
+
+Type in line 42 in path to file.  Should be "Data", not "data".
+
+```{r}
+source("./02 - Analysis/03 - Extract_Visualise_Risk_by_Country.R")
+```
+
+Doesn't have the install packages code like in the previous scripts.  Also, missing loading of libraries c("rnaturalearthdata", "mapproj") at top of script; was prompted to install this package before the script could be sourced. 
+
+Can generate the figures in this script, but they are not the same as the figures in the paper.  
+
+```{r}
+CRUCL2.0_risk <- raster("Cache/New_Risk_Maps/CRUCL2.0_SimCastMeta_Susceptible_Prediction.tif")
+A2_risk <- raster("Cache/New_Risk_Maps/A2_SimCastMeta_Susceptible_Prediction.tif")
+
+```
+
