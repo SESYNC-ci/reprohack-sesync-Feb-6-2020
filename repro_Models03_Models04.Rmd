@@ -1,0 +1,396 @@
+---
+title: "Repro of ecocrop output"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Summary
+
+In the below document we are reproducing steps 3 and 4 within the "Models" part of the potato blight paper. Step 3 is to run ecocrop on current climate and output the optimal potato planting date. Step 3 does the same with the A2 scenario climate projections.
+
+As we understand it, we are going to run script to download the climate data, manipulate the rasters, and then run ecocrop on those input data.
+
+# Source needed functions
+
+```{r}
+# Libraries --------------------------------------------------------------------
+library(raster)
+library(dismo)
+
+# Load specialised functions ---------------------------------------------------
+source("Functions/run_ecocrop.R")
+source("Functions/Get_CRU_20_Data.R")
+source("Functions/Get_MIRCA.R")
+source("Functions/create_stack.R")
+```
+
+Functions sourced OK, and other required packages were loaded.
+
+# Download the data
+
+This will download the data from Adam's figshare repository. It also downloads climate data directly from CRU and potato harvest area data from a Frankfurt site
+
+Apparently annual area harvested is no longer available from the original source but it's included in the repo.
+
+```{r}
+CRU_data <- CRU_Growing_Season_DL()
+
+if (!file.exists("Data/MIRCA_Poplant.tif")) {
+  download_MIRCA()
+}
+MIRCA <- raster("Data/MIRCA_Poplant.tif")
+```
+
+Manually downloading the data from Uni Frankfurt
+
+```{r}
+new_url <- "https://hessenbox-a10.rz.uni-frankfurt.de/dl/fi72QzqeLV6gHKy49zUSnP5X/harvested_area_grids.zip"
+
+download.file(new_url, "/nfs/public-data/ReproHack_2020/growingarea/harvested_area_grids.zip", mode = "wb")
+```
+
+Unzip the file. Only extract the two we need.
+
+```{r}
+unzip("/nfs/public-data/ReproHack_2020/growingarea/harvested_area_grids.zip", 
+      files = c("ANNUAL_AREA_HARVESTED_IRC_CROP10_HA.ASC.gz", "ANNUAL_AREA_HARVESTED_RFC_CROP10_HA.ASC.gz"))
+```
+
+We also need the cell area grid
+
+```{r}
+area_url <- "https://hessenbox-a10.rz.uni-frankfurt.de/dl/fiSjVq4Eg5ZMQuWsK8HoESWu/cell_area_grid.zip"
+
+download.file(area_url, "/nfs/public-data/ReproHack_2020/growingarea/cell_area_grid.zip", mode = "wb")
+
+
+```
+
+```{r}
+unzip("/nfs/public-data/ReproHack_2020/growingarea/cell_area_grid.zip", files = "cell_area_ha_05mn.asc.gz")
+```
+
+
+We need to modify the download_MIRCA function to work with the files we downloaded instead of trying to download them itself
+
+```{r}
+download_MIRCA <- function(){
+  # url_IRC <- "ftp://ftp.rz.uni-frankfurt.de/pub/uni-frankfurt/physische_geographie/hydrologie/public/data/MIRCA2000/harvested_area_grids/ANNUAL_AREA_HARVESTED_IRC_CROP10_HA.ASC.gz"
+  # url_RFC <- "ftp://ftp.rz.uni-frankfurt.de/pub/uni-frankfurt/physische_geographie/hydrologie/public/data/MIRCA2000/harvested_area_grids/ANNUAL_AREA_HARVESTED_RFC_CROP10_HA.ASC.gz"
+  # url_Area <- "ftp://ftp.rz.uni-frankfurt.de/pub/uni-frankfurt/physische_geographie/hydrologie/public/data/MIRCA2000/cell_area_grid/cell_area_ha_05mn.asc.gz"
+  # 
+  # download.file(url_IRC, "Data/ANNUAL_AREA_HARVESTED_IRC_CROP10_HA.ASC.gz", mode = "wb")
+  # download.file(url_RFC, "Data/ANNUAL_AREA_HARVESTED_RFC_CROP10_HA.ASC.gz", mode = "wb")
+  # download.file(url_Area, "Data/cell_area_ha_05mn.asc.gz", mode = "wb")
+  # 
+  #gunzip("Data/ANNUAL_AREA_HARVESTED_IRC_CROP10_HA.ASC.gz")
+  gunzip("Data/ANNUAL_AREA_HARVESTED_RFC_CROP10_HA.ASC.gz") 
+  gunzip("Data/cell_area_ha_05mn.asc.gz")
+  
+  r_IRC <- raster("Data/ANNUAL_AREA_HARVESTED_IRC_CROP10_HA.ASC")
+  r_RFC <- raster("Data/ANNUAL_AREA_HARVESTED_RFC_CROP10_HA.ASC")
+  r_area <- raster("Data/cell_area_ha_05mn.asc")
+  
+  r_IRC <- aggregate(r_IRC, 2)
+  r_RFC <- aggregate(r_RFC, 2)
+  r_area <- aggregate(r_area, 2)
+  
+  per_r_IRC <- r_IRC/r_area # calculate the percent area in cell that is irrigated potato
+  per_r_RFC <- r_RFC/r_area # calculate the percent area in cell that is rainfed potato
+  MIRCA <- per_r_IRC+per_r_RFC # combine the rainfed and irrigated percentages, EcoCrop predicts both
+  
+  MIRCA[MIRCA <= 0] <- NA # reclassify anything below 0% area to NA
+  MIRCA <- crop(MIRCA, c(-180, 180, -60, 90)) # crop % area to match extent of CRU CL2.0
+  writeRaster(MIRCA, "Data/MIRCA_Poplant.tif", overwrite = TRUE, 
+              format = "GTiff", c("COMPRESS=LZW"))
+}
+```
+
+Run our modified version of download_MIRCA that works with pre downloaded files
+
+```{r}
+if (!file.exists("Data/MIRCA_Poplant.tif")) {
+  download_MIRCA()
+}
+MIRCA <- raster("Data/MIRCA_Poplant.tif")
+```
+
+# Manipulate rasters
+
+This should create rasters of climate and mask them by potato growing areas
+
+```{r}
+# Data munging----- ------------------------------------------------------------
+pre_stack <- create_stack(CRU_data$pre)
+tmn_stack <- create_stack(CRU_data$tmn)
+tmp_stack <- create_stack(CRU_data$tmp)
+tmx_stack <- create_stack(CRU_data$tmx)
+
+# Mask the CRU CL2.0 stacks with MIRCA to reduce the run time of EcoCrop
+# Also, removes areas where potato is not grown. EcoCrop will predict potato
+# growth nearly anywhere with irrigation
+pre_stack <- mask(pre_stack, MIRCA)
+tmn_stack <- mask(tmn_stack, MIRCA)
+tmx_stack <- mask(tmx_stack, MIRCA)
+tmp_stack <- mask(tmp_stack, MIRCA)
+
+```
+
+We got some warnings. Let's try to plot the masked raster and see if it worked.
+
+```{r}
+plot(pre_stack)
+```
+
+# Run ecocrop
+
+This should run the model first for rainfed potato crops, then for irrigated potato crops. 
+Then it will output a raster. The 0 values are reclassified to NA values and overwritten.
+
+We added the 'new' prefix to all file names so that we can compare the old and new versions to ensure we reproduced.
+
+```{r}
+# Run ECOCROP model on raster stack of pre, tmp, tmn and tmx -------------------
+prf <- run_ecocrop(pot, tmn_stack, tmx_stack, tmp_stack, pre_stack, 
+                   rainfed = TRUE, 
+                   filename = "Cache/Planting Seasons/newCRUCL2.0_PRF.tif", 
+                   format = "GTiff", dataType = "INT2S", 
+                   options = c("COMPRESS=LZW"), 
+                   overwrite = TRUE)
+
+pir <- run_ecocrop(pot, tmn_stack, tmx_stack, tmp_stack, pre_stack, 
+                   rainfed = FALSE, 
+                   filename = "Cache/Planting Seasons/newCRUCL2.0_PIR.tif",
+                   format = "GTiff", dataType = "INT2S", 
+                   options = c("COMPRESS=LZW"), 
+                   overwrite = TRUE)
+
+# rainfed potato planting date raster
+potplant_prf <- raster("Cache/Planting Seasons/newCRUCL2.0_PRF.tif")
+potplant_prf <- reclassify(potplant_prf, c(0, 0, NA), include.lowest = TRUE)
+names(potplant_prf) <- "Ecocrop Rainfed Planting Dates for 1975"
+writeRaster(potplant_prf, "Cache/Planting Seasons/newCRUCL2.0_PRF.tif",
+            format = "GTiff", dataType = "INT2S", 
+            options = c("COMPRESS=LZW"), 
+            overwrite = TRUE)
+
+# irrigated potato planting date raster
+poplant_pir <- raster("Cache/Planting Seasons/newCRUCL2.0_PIR.tif")
+poplant_pir <- reclassify(poplant_pir, c(0, 0, NA), include.lowest = TRUE)
+names(poplant_pir) <- "Ecocrop Irrigated Planting Dates for 1975"
+writeRaster(poplant_pir, "Cache/Planting Seasons/newCRUCL2.0_PIR.tif",
+            format = "GTiff", dataType = "INT2S", 
+            options = c("COMPRESS=LZW"), 
+            overwrite = TRUE)
+
+```
+
+The rest should be some small manipulations to combine the rainfed and irrigated layers, using irrigated to fill gaps, then replace missing values with neighbors.
+
+```{r}
+# Take both rasters, combine them, use irrigated potato where rainfed is NA
+comb <- cover(potplant_prf, poplant_pir)
+comb <- reclassify(comb, c(0, 0, NA), include.lowest = TRUE)
+
+# Do some filling of NAs with modal neighborhood values, 2X, not a mistake
+com <- focal(comb, fun = modal, na.rm = TRUE, w = matrix(1, 3, 3),
+             NAonly = TRUE)
+com <- focal(com, fun = modal, na.rm = TRUE, w = matrix(1, 3, 3),
+             NAonly = TRUE)
+
+# Clean up the planting date map again with MIRCA to remove non-potato growing
+# areas
+com <- mask(com, MIRCA)
+names(com) <- "Ecocrop Planting Dates for 1975"
+writeRaster(com, "Cache/Planting Seasons/newCRUCL2.0_Combined.tif",
+            format = "GTiff", dataType = "INT2S", 
+            options = c("COMPRESS=LZW"), 
+            overwrite = TRUE)
+
+
+
+```
+
+
+Create the plot and see whether it matches output
+
+```{r}
+# Data visualisation -----------------------------------------------------------
+plot(com, main = "Potato planting dates as predicted by EcoCrop", 
+     xlab = "Longitude", ylab = "Latitude",
+     legend.args = list(text = "Month", side = 3, font = 2, 
+                        line = 1, cex = 0.8))
+```
+
+Load the original one from cache and make a plot to see if ours is identical
+
+```{r}
+oldcom <- raster('Cache/Planting Seasons/CRUCL2.0_Combined.tif')
+plot(oldcom, main = "Potato planting dates as predicted by EcoCrop", 
+     xlab = "Longitude", ylab = "Latitude",
+     legend.args = list(text = "Month", side = 3, font = 2, 
+                        line = 1, cex = 0.8))
+```
+
+To test quantitatively subtract the rasters and get the max difference
+
+```{r}
+temp <- com - oldcom
+maxValue(abs(temp))
+plot(temp)
+hist(temp)
+
+```
+
+See how many values have >0 difference
+
+```{r}
+table(abs(getValues(temp)) > 0)
+```
+
+Plot locations of values that are greater than 0
+
+```{r}
+temp_bigger_than0 <- temp > 0
+plot(as.factor(temp_bigger_than0))
+```
+
+
+# Future climate scenario
+
+The first few lines of script 4 are the same as script 3.
+
+The first thing that differs is where we download data for the A2 scenario
+
+```{r}
+source("Functions/Get_A2_Data.R")
+download_A2_data() # download A2 climate data files from Figshare.
+```
+
+The above returned an error because it could not find the relative humidity zip file. We manually moved the already downloaded file to the data directory. It looks like humidity isn't used in this part of the process so we don't have to worry about it.
+
+Next manipulate the rasters.
+
+```{r}
+# sort out the different time-slices, most analysis was with 2050 only so it is
+# the only one featured here. Feel free to use the other two time-slices in the
+# same fashion
+pre_stack <- stack(list.files(path = "Data/A2 Precipitation", 
+                              pattern = "a2pr50[[:digit:]]{2}.tif", 
+                              full.names = TRUE))/10
+tmn_stack <- stack(list.files(path = "Data/A2 Minimum Temperature", 
+                              pattern = "a2tn50[[:digit:]]{2}.tif", 
+                              full.names = TRUE))/10 
+tmx_stack <- stack(list.files(path = "Data/A2 Maximum Temperature", 
+                              pattern = "a2tx50[[:digit:]]{2}.tif", 
+                              full.names = TRUE))/10
+tmp_stack <- stack(list.files(path = "Data/A2 Average Temperature", 
+                              pattern = "a2tmp50[[:digit:]]{2}.tif", 
+                              full.names = TRUE))/10
+
+# Data munging -----------------------------------------------------------------
+
+# Removes areas where potato is not grown. EcoCrop will predict potato growth
+# nearly anywhere with irrigation
+pre_stack <- mask(pre_stack, MIRCA)
+tmn_stack <- mask(tmn_stack, MIRCA)
+tmx_stack <- mask(tmx_stack, MIRCA)
+tmp_stack <- mask(tmp_stack, MIRCA)
+
+```
+
+Run ecocrop on the future climate data. We put the new prefix on so that the cached tifs are not written over.
+
+Here we correct a typo: the function called should be run_ecocrop() but in the script it was ecocrop().
+
+```{r}
+# Run ECOCROP model on raster stack of pre, tmp, tmn and tmx -------------------
+prf <- run_ecocrop(pot, tmn_stack, tmx_stack, tmp_stack, pre_stack, 
+               rainfed = TRUE, 
+               filename = "Cache/Planting Seasons/newA2_2050_PRF.tif", 
+               format = "GTiff", dataType = "INT2S", 
+               options = c("COMPRESS=LZW"), 
+               overwrite = TRUE)
+
+pir <- run_ecocrop(pot, tmn_stack, tmx_stack, tmp_stack, pre_stack, 
+               rainfed = FALSE, 
+               filename = "Cache/Planting Seasons/newA2_2050_PIR.tif",
+               format = "GTiff", dataType = "INT2S", 
+               options = c("COMPRESS=LZW"), 
+               overwrite = TRUE)
+
+# rainfed potato planting date raster
+poplant_prf <- raster("Cache/Planting Seasons/newA2_2050_PRF.tif")
+poplant_prf <- reclassify(poplant_prf, c(0, 0, NA), include.lowest = TRUE)
+names(poplant_prf) <- "Ecocrop Rainfed Planting Dates for 2050"
+writeRaster(poplant_prf, "Cache/Planting Seasons/newA2_2050_PRF.tif",
+            format = "GTiff", dataType = "INT2S", 
+            options = c("COMPRESS=LZW"), 
+            overwrite = TRUE)
+
+# irrigated potato planting date raster
+poplant_pir <- raster("Cache/Planting Seasons/newA2_2050_PIR.tif")
+poplant_pir <- reclassify(poplant_pir, c(0, 0, NA), include.lowest = TRUE)
+names(poplant_pir) <- "Ecocrop Irrigated Planting Dates for 2050"
+writeRaster(poplant_pir, "Cache/Planting Seasons/newA2_2050_PIR.tif",
+            format = "GTiff", dataType = "INT2S", 
+            options = c("COMPRESS=LZW"),
+            overwrite = TRUE)
+
+```
+Do the post processing just like in step 3.
+
+```{r}
+# Take both rasters, combine them, use irrigated potato where rainfed is NA
+comb <- cover(poplant_prf, poplant_pir)
+comb <- reclassify(comb, c(0, 0, NA), include.lowest = TRUE)
+
+# Do some filling of NAs with modal neighborhood values, 2X (not a mistake)
+com <- focal(comb, fun = modal, na.rm = TRUE, w = matrix(1, 3, 3), NAonly = TRUE)
+com <- focal(com, fun = modal, na.rm = TRUE, w = matrix(1, 3, 3), NAonly = TRUE)
+
+# Finally, clean up the planting date map again with MIRCA to remove non-potato
+# growing areas
+com <- mask(com, MIRCA)
+names(com) <- "Ecocrop Planting Dates for 2050"
+writeRaster(com, "Cache/Planting Seasons/newA2_2050_Combined.tif",
+            format = "GTiff", dataType = "INT2S", 
+            options = c("COMPRESS=LZW"), 
+            overwrite = TRUE)
+
+```
+
+Plot the one we made
+
+```{r}
+plot(com, main = "A2 Potato planting dates as predicted by EcoCrop", 
+     xlab = "Longitude", ylab = "Latitude",
+     legend.args = list(text = "Month", side = 3, 
+                        font = 2, line = 1, cex = 0.8))
+```
+
+
+Plot the cached version
+
+```{r}
+oldcom <- raster('Cache/Planting Seasons/A2_2050_Combined.tif')
+plot(oldcom, main = "A2 Potato planting dates as predicted by EcoCrop", 
+     xlab = "Longitude", ylab = "Latitude",
+     legend.args = list(text = "Month", side = 3, font = 2, 
+                        line = 1, cex = 0.8))
+```
+
+
+Take difference and see if there are any discrepancies
+
+```{r}
+temp <- com - oldcom
+max(abs(getValues(temp)))
+plot(temp)
+hist(temp)
+table(abs(getValues(temp)) > 0)
+```
+
